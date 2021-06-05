@@ -18,10 +18,11 @@ struct SidebarSplitView: View, UIViewControllerRepresentable {
 	var columnC = UIViewController()
 	
 	init<A:View, B:View, C:View>(@ViewBuilder content: @escaping () -> TupleView <(A,B,C)>) {
+		let content = content()
 		
-		columnA = UIHostingController(rootView: content().value.0)
-		columnB = UIHostingController(rootView: content().value.1)
-		columnC = UIHostingController(rootView: content().value.2)
+		columnA = UIHostingController(rootView: content.value.0)
+		columnB = UIHostingController(rootView: content.value.1)
+		columnC = UIHostingController(rootView: content.value.2)
 		
 		columnA.view.backgroundColor = .clear
 		columnB.view.backgroundColor = .clear
